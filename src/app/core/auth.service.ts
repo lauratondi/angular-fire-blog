@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import * as firebase from 'firebase/app';
+import firebase from 'firebase/app';
 import { AngularFireAuth } from '@angular/fire/auth';
 import {
   AngularFirestore,
@@ -54,11 +54,26 @@ export class AuthService {
         .createUserWithEmailAndPassword(email, password)
         // Firebase send back the user with the data from firebase. In firebase we've created an User Object
         // That contains uid, email, ... We take the user that comes back from FB and pass it in the updateUserData
-        .then((user) => this.updateUserData(user))
-
+        .then((data) => this.updateUserData(data.user))
         .then(() => console.log('Welcome! Your account has been created'))
-        .catch((error) => console.log(error.message))
+        .then(() => {
+          this.afAuth.currentUser
+            .then((user) => {
+              return user
+                ?.sendEmailVerification()
+                .then(() => console.log('We sent you an email verification'))
+                .catch((error: any) => console.log(error.message));
+            })
+            .catch((error) => console.log(error.message));
+        })
     );
+  }
+
+  resetPassword(email: string) {
+    return firebase
+      .auth()
+      .sendPasswordResetEmail(email)
+      .then(() => console.log('We sent you a password reset link'));
   }
 
   signOut() {
