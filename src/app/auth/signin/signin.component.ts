@@ -16,7 +16,7 @@ export class SigninComponent implements OnInit {
 
   constructor(
     public fb: FormBuilder,
-    private auth: AuthService,
+    public auth: AuthService,
     private router: Router
   ) {
     this.signInForm = this.fb.group({
