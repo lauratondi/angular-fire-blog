@@ -1,8 +1,5 @@
-/* ul {
-  list-style: none;
+img {
+  max-width: 80px;
+  max-height: 80px;
+  margin-right: 10px;
 }
-
-mat-card {
-  margin: 10px;
-  width: 300px;
-} */

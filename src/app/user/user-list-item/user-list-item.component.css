@@ -1,8 +1,17 @@
-ul {
-  list-style: none;
+.user-title {
+  margin-left: 1em;
+}
+mat-card {
+  margin-top: 1em;
+  padding: 1em 0;
+}
+mat-card-content,
+mat-card-actions {
+  margin: 1em;
 }
 
-mat-card {
-  margin: 10px;
-  width: 300px;
+img {
+  max-width: 80px;
+  max-height: 80px;
+  margin-right: 10px;
 }
