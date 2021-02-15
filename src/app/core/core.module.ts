@@ -7,6 +7,7 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AuthModule } from '../auth/auth.module';
 import { AuthService } from './auth.service';
+import { UserModule } from '../user/user.module';
 
 @NgModule({
   declarations: [],
@@ -16,6 +17,7 @@ import { AuthService } from './auth.service';
     AngularFirestoreModule,
     AngularFireStorageModule,
     AngularFireAuthModule,
+    UserModule,
   ],
   providers: [AuthService],
 })
