@@ -16,7 +16,7 @@ const routes: Routes = [
   },
   { path: 'users', component: UserListComponent, data: { title: 'Users' } },
   {
-    path: 'profile',
+    path: 'users/:id',
     component: UserDetailComponent,
     data: { title: 'Profile' },
   },
@@ -30,6 +30,7 @@ const routes: Routes = [
     UserListItemComponent,
   ],
   imports: [SharedModule, RouterModule.forChild(routes)],
+  exports: [UserListItemComponent],
   providers: [UserService],
 })
 export class UserModule {}
