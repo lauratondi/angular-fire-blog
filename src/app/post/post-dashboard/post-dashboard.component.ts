@@ -49,7 +49,7 @@ export class PostDashboardComponent implements OnInit {
 
   savePost() {
     const formData: Post = {
-      author: this.auth.currentUserId,
+      author: this.auth.currentUser,
       title: this.postForm.get('title')!.value,
       image: this.imageURL || null,
       content: this.postForm.get('content')!.value,
