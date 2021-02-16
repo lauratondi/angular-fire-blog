@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+
 import { SharedModule } from '../shared/shared.module';
+import { PostModule } from '../post/post.module';
+
 import { UserService } from '../user/user.service';
 
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
@@ -29,7 +32,7 @@ const routes: Routes = [
     UserListComponent,
     UserListItemComponent,
   ],
-  imports: [SharedModule, RouterModule.forChild(routes)],
+  imports: [SharedModule, PostModule, RouterModule.forChild(routes)],
   exports: [UserListItemComponent],
   providers: [UserService],
 })

@@ -48,7 +48,9 @@ export class AuthService {
   get authenticated(): boolean {
     return this.authState !== null;
   }
-
+  get currentUser(): string {
+    return this.authenticated ? this.authState.displayName : null;
+  }
   get currentUserId(): string {
     return this.authenticated ? this.authState.uid : null;
   }

@@ -4,6 +4,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 @NgModule({
   exports: [
@@ -12,6 +14,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     MatInputModule,
     MatCardModule,
     MatToolbarModule,
+    MatSlideToggleModule,
+    MatProgressBarModule,
   ],
   imports: [
     MatButtonModule,
@@ -19,6 +23,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     MatInputModule,
     MatCardModule,
     MatToolbarModule,
+    MatSlideToggleModule,
+    MatProgressBarModule,
   ],
 })
 export class MaterialModule {}
