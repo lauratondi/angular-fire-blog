@@ -8,7 +8,8 @@
     <mat-card-content>
       <mat-card-title>{{ post.title }}</mat-card-title>
       <mat-card-subtitle>
-        posted by {{ post.author }} on {{ post.published }}
+        posted by {{ post.author }} on
+        {{ post.published.toDate() | date: "medium" }}
       </mat-card-subtitle>
       <p>{{ post.id }}</p>
       <p>{{ post.content }}</p>
