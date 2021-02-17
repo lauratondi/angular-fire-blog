@@ -31,7 +31,10 @@
         <p>{{ user.email }}</p>
       </div>
     </div>
-    <app-post-dashboard></app-post-dashboard>
+    <!-- <app-post-dashboard></app-post-dashboard> -->
+    <mat-card>
+      <app-upload></app-upload>
+    </mat-card>
   </div>
 
   <div [hidden]="!editing">
