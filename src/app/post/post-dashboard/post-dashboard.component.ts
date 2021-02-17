@@ -49,13 +49,14 @@ export class PostDashboardComponent implements OnInit {
 
   savePost() {
     const formData: Post = {
-      author: this.auth.currentUser,
+      author: this.auth.authState.displayName || this.auth.authState.email,
+      authorId: this.auth.currentUserId,
       title: this.postForm.get('title')!.value,
       image: this.imageURL || null,
       content: this.postForm.get('content')!.value,
       draft: this.postForm.get('draft')?.value,
       published: new Date(),
-      claps: 0,
+      trending: 0,
     };
     if (!this.postForm.untouched) {
       this.postService.create(formData);

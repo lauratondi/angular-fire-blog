@@ -14,15 +14,12 @@ import { Post } from './post.model';
 })
 export class PostService {
   postCollection: AngularFirestoreCollection<Post>;
+  postDoc: AngularFirestoreDocument;
 
   constructor(private afs: AngularFirestore) {
     this.postCollection = this.afs.collection('posts', (ref) =>
-      ref.orderBy('claps', 'desc').limit(10)
+      ref.orderBy('trending', 'desc').limit(10)
     );
-  }
-
-  create(data: Post) {
-    return this.postCollection.add(data);
   }
 
   getPosts(): Observable<Post[]> {
@@ -35,5 +32,28 @@ export class PostService {
         })
       )
     );
+  }
+
+  // It's just a reference to display in the DB
+  getPost(id: string) {
+    return this.afs.doc<Post>(`posts/${id}`);
+  }
+
+  // Is returning an Observable
+  getPostData(id: string | any) {
+    this.postDoc = this.afs.doc<Post>(`posts/${id}`);
+    return this.postDoc.valueChanges();
+  }
+
+  create(data: Post) {
+    return this.postCollection.add(data);
+  }
+
+  delete(id: string) {
+    return this.getPost(id).delete();
+  }
+
+  update(id: any, formData: any) {
+    return this.getPost(id).update(formData);
   }
 }

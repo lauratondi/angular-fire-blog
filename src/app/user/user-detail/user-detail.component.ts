@@ -9,7 +9,7 @@ import { User } from '../user.model';
   styleUrls: ['./user-detail.component.css'],
 })
 export class UserDetailComponent implements OnInit {
-  user: User | void;
+  user: User | any;
 
   constructor(
     private route: ActivatedRoute,

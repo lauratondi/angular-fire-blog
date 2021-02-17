@@ -2,9 +2,10 @@ export class Post {
   id?: string;
   image: any;
   author: string;
+  authorId: string;
   title: string;
   content: string;
   draft: boolean;
-  claps: number;
-  published: Date;
+  trending: number;
+  published: Date | any;
 }
