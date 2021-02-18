@@ -9,6 +9,7 @@ import { UploadService } from './upload.service';
 export class UploadComponent implements OnInit {
   @Input() path: any;
   @Input() meta: any;
+  @Input() uploadType: boolean;
 
   selection: FileList;
 
@@ -21,13 +22,19 @@ export class UploadComponent implements OnInit {
     console.log(this.selection);
   }
 
-  // upload() {
-  //   const file = this.selection[0];
+  upload() {
+    const file = this.selection[0];
 
-  //   if (file.type.split('/')[0] == 'image') {
-  //     this.UploadService.uploadtask(this.path, file, this.meta);
-  //   } else {
-  //     console.log('Images only');
-  //   }
-  // }
+    if (file.type.split('/')[0] == 'image') {
+      this.UploadService.uploadTask(
+        this.path,
+        file,
+        this.meta,
+        this.uploadType
+      );
+      console.log('hi');
+    } else {
+      console.log('Images only');
+    }
+  }
 }

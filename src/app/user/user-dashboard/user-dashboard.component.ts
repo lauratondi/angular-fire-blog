@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { Location } from '@angular/common';
 
 import {
@@ -8,6 +8,7 @@ import {
 import { User } from '../user.model';
 import { AuthService } from '../../core/auth.service';
 import { UserService } from '../user.service';
+import { throttleTime } from 'rxjs/operators';
 
 @Component({
   selector: 'app-user-dashboard',
@@ -15,9 +16,14 @@ import { UserService } from '../user.service';
   styleUrls: ['./user-dashboard.component.css'],
 })
 export class UserDashboardComponent implements OnInit {
+  @Output() path: string;
   editing = false;
   user: User | any;
   task: AngularFireUploadTask;
+
+  // path: string;
+  meta: object;
+  uploadType: boolean;
 
   constructor(
     private auth: AuthService,
@@ -28,6 +34,15 @@ export class UserDashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.getUser();
+    this.setUploadData();
+  }
+
+  setUploadData() {
+    return this.auth.user.subscribe((user: User) => {
+      this.path = `users/${user.uid}/newUploadCollection`;
+      this.meta = { uploader: user.uid, website: 'lauratondi.net' };
+      this.uploadType = true;
+    });
   }
 
   getUser() {
