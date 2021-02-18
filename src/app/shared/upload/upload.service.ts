@@ -23,9 +23,11 @@ export class UploadService {
   ) {}
 
   uploadTask(path: any, file: any, meta: any, uploadType: boolean) {
-    const nameHash = Md5.hashStr(file.name + new Date().getTime());
+    // const nameHash = Md5.hashStr(file.name + new Date().getTime());
     const fileExt = file.type.split('/')[1];
-    const name = `${nameHash}.${fileExt}`;
+    // const name = `${nameHash}.${fileExt}`;
+    const name = file.name.split('/')[0];
+    // const name = `${fileName}.${fileExt}`;
 
     const newMeta = {
       ...meta,

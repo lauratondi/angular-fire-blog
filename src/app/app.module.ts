@@ -9,6 +9,7 @@ import { AppComponent } from './app.component';
 import { MaterialModule } from './material.module';
 import { CoreModule } from './core/core.module';
 import { PostModule } from './post/post.module';
+import { GalleryModule } from './gallery/gallery.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -20,6 +21,7 @@ import { PostModule } from './post/post.module';
     CoreModule,
     AngularFireModule.initializeApp(environment.firebase),
     PostModule,
+    GalleryModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
